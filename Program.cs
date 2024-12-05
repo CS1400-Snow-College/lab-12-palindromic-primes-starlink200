@@ -1,14 +1,33 @@
-﻿internal class Program
+﻿/*************************************
+* Name: Caleb Roskelley
+* Project: Lab 12 Palindromic Primes
+* Date Due: 12/4/2024
+*************************************/
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-        Console.WriteLine(IsPrime(Convert.ToInt32(Console.ReadLine())));
-        Console.WriteLine(isPalidromic(Convert.ToInt32(Console.ReadLine())));
+        bool validNum = true;
+        int num = 0;
+        intro();
+        do
+        {
+            Console.WriteLine("What palindromic prime would you like me to find?");
+            validNum = int.TryParse(Console.ReadLine(), out num);
+        }
+        while(!validNum);
+        Console.WriteLine($"{nthPrimePalindrome(num)} is the {num}th palindromic prime");
+    }
+
+    static void intro()
+    {
+        Console.WriteLine("Hello! This program will find the nth palindromic prime, which is a number that is the same forwards and backwards and it is only divisible by itself and 1");
+        Console.WriteLine("n which palindromic prime you want me to find i.e. find the 10th palindromic prime");
     }
 
     //IsPrime() will decide if a number is a prime number, return true if it is prime, otherwise return false;
-    static bool IsPrime(int testNum)
+    static bool isPrime(int testNum)
     {
         int count = 0;
 
@@ -40,31 +59,51 @@
     {
         List<int> storeNums = new List<int>();
         int numCopy = num;
+
+        //digit count will keep track of how many digits the number is
+        //when deciding if a number is palindromic correct count will be
+        //tested to see if its the same as digit count
+        int correctCount = 0;
+        int digitCount = 0;
         while(num > 0)
         {
             storeNums.Add(num%10);
             num = num / 10;
+            digitCount++;
         }
-        foreach(int number in storeNums)
-        {
-            Console.Write( number + " " );
-        }
-        for(int i = 0; i < storeNums.Count()-1; i++)
+
+        for(int i = 0; i < storeNums.Count()/2; i++)
         {
             if(storeNums[i] == storeNums[storeNums.Count()-1 - i])
             {
-                
-                return true;
+                correctCount++;
             }
             else
             {
                 i = storeNums.Count();
             }
         }
-        if(numCopy < 10)
+        if(correctCount == digitCount/2)
         {
             return true;
         }
         return false;
+    }
+
+    //this method will use the IsPrime and isPalindromic methods to then find the specified nth palindromic prime
+    static int nthPrimePalindrome(int n)
+    {
+        int count = 0;
+        //num is the number that is being tested
+        int num = 1;
+        while(count != n)
+        {
+            num++;
+            if(isPrime(num) && isPalidromic(num))
+            {
+                count++;
+            }
+        }
+        return num;
     }
 }

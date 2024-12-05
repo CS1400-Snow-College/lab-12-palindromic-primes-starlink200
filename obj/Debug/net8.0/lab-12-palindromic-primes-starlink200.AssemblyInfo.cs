@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lab-12-palindromic-primes-starlink200")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d544e063ace99fb5dd726d2baaa8f3a282286a3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f9c4db6565ce2f6e08937ee2201b3219031b2fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("lab-12-palindromic-primes-starlink200")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lab-12-palindromic-primes-starlink200")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
